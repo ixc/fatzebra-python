@@ -118,7 +118,7 @@ class Gateway(object):
     def _gateway(self):
         """Get the gateway URL
         """
-        return "http://fatapi.dev/v1.0/" if self.sandbox else "https://gateway.fatzebra.com.au/v1.0/"
+        return "https://gateway.sandbox.fatzebra.com.au/v1.0/" if self.sandbox else "https://gateway.fatzebra.com.au/v1.0/"
 
     def _headers(self):
         """Builds the headers for the request
