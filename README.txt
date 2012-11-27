@@ -16,9 +16,10 @@ add it yourself please contact support@fatzebra.com.au and request the changes.
 
 
 Usage
------
+=====
 
-**Purchases**
+Purchases
+---------
 
     import fatzebra
 
@@ -34,8 +35,8 @@ Usage
     except fatzebra.errors.AuthenticationError:
         print "Authentication error - please check your username and token"
 
-**Tokenization**
-
+Tokenization
+------------
 
     import fatzebra
 
@@ -48,8 +49,9 @@ Usage
     except fatzebra.errors.AuthenticationError:
         print "Authentication error - please check your username and token"
 
-**Purchase with Token**
 
+Purchase with Token
+-------------------
 
     import fatzebra
 
@@ -66,8 +68,9 @@ Usage
     except fatzebra.errors.AuthenticationError:
      print "Authentication error - please check your username and token"
 
-**Refund**
 
+Refund
+------
 
     import fatzebra
 
@@ -86,7 +89,7 @@ Usage
 
 
 Notes
------
+=====
 
 The gateway class utilizes 3 error classes:
 
@@ -95,7 +98,7 @@ The gateway class utilizes 3 error classes:
  * `fatzebra.errors.AuthenticationError` - this indicates your username and token are incorrect. Confirm that you have the right details and you are using the right gateway. Sandbox credentials will begin with **TEST**
 
 Credits
--------
+=======
 
 This library was developed by Matthew Savage (Fat Zebra) with the assistance of Simon Meers (Digital Eskimo). It there are any questions or problems with this library
 please contact Fat Zebra (support@fatzebra.com.au) or open an `issue <https://github.com/fatzebra/fatzebra-python/issues>`_.
