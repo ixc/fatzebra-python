@@ -1,5 +1,6 @@
-fatzebra-python
-===============
+========================
+Fat Zebra Python Library
+========================
 
 This library provides *basic* functionality for the Fat Zebra Payment Gateway.
 
@@ -97,4 +98,4 @@ Credits
 -------
 
 This library was developed by Matthew Savage (Fat Zebra) with the assistance of Simon Meers (Digital Eskimo). It there are any questions or problems with this library
-please contact Fat Zebra (support@fatzebra.com.au) or open an [issue](https://github.com/fatzebra/fatzebra-python/issues).
+please contact Fat Zebra (support@fatzebra.com.au) or open an `issue <https://github.com/fatzebra/fatzebra-python/issues>`_.
