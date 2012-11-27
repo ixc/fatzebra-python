@@ -17,7 +17,7 @@ add it yourself please contact support@fatzebra.com.au and request the changes.
 Usage
 -----
 
-1. Purchases
+**Purchases**
 
 ```python
 
@@ -36,7 +36,7 @@ except fatzebra.errors.AuthenticationError:
     print "Authentication error - please check your username and token"
 ```
 
-2. Tokenization
+**Tokenization**
 
 ```python
 
@@ -52,7 +52,7 @@ except fatzebra.errors.AuthenticationError:
     print "Authentication error - please check your username and token"
 ```
 
-3. Purchase with Token
+**Purchase with Token**
 
 ```python
 
@@ -72,7 +72,7 @@ except fatzebra.errors.AuthenticationError:
  print "Authentication error - please check your username and token"
 ```
 
-4. Refund
+**Refund**
 
 ```python
 
@@ -98,8 +98,7 @@ Notes
 
 The gateway class utilizes 3 error classes:
 
- * fatzebra.errors.GatewayError - this represents an unsuccessful response from the gateway (invalid card number, expiry etc). Check the errors attribute for messages (array)
- * fatzebra.errors.GatewayUnknownError - this represents an unknown error. Check the `code` and `response` attributes for details
- * fatzebra.errors.AuthenticationError - this indicates your username and token are incorrect. Confirm that you have the right details and you are using the right gateway. Sandbox credentials will begin with TEST
+ * `fatzebra.errors.GatewayError` - this represents an unsuccessful response from the gateway (invalid card number, expiry etc). Check the `errors` attribute for messages (array)
+ * `fatzebra.errors.GatewayUnknownError` - this represents an unknown error. Check the `code` and `response` attributes for details
+ * `fatzebra.errors.AuthenticationError` - this indicates your username and token are incorrect. Confirm that you have the right details and you are using the right gateway. Sandbox credentials will begin with **TEST**
 
- 
