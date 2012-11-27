@@ -3,9 +3,9 @@ import json
 
 from . import data
 from . import errors
+from . import version
 
 class Gateway(object):
-    VERSION = "0.0.1"
     SANDBOX_URL = "https://gateway.sandbox.fatzebra.com.au/v1.0/"
     LIVE_URL = "https://gateway.fatzebra.com.au/v1.0/"
 
@@ -167,6 +167,6 @@ class Gateway(object):
     def _headers(self):
         """ Builds the headers for the request """
         return {
-            "User-Agent": "Python Library %s" % self.VERSION,
+            "User-Agent": "Python Library %s" % version.VERSION,
             "Content-type": "application/json"
         }
