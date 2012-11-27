@@ -16,10 +16,11 @@ os.chdir(os.path.abspath(path))
 setup(name='fatzebra',
     version=version.VERSION,
     description='Fat Zebra Python Library',
+    long_description=open("README.txt").read(),
     author='Fat Zebra',
     author_email='support@fatzebra.com.au',
     url='https://www.fatzebra.com.au/',
     packages=['fatzebra'],
-    install_requires=['requests >= 0.8.8', 'simplejson'],
+    install_requires=['requests >= 0.14.2', 'simplejson'],
     test_suite='test',
 )
