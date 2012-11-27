@@ -1,5 +1,5 @@
 class Purchase(object):
-    def __init__(self, data={}):
+    def __init__(self, data):
         self.id            = data["id"]
         self.authorization = data["authorization"]
         self.successful    = data["successful"]
@@ -13,18 +13,17 @@ class Purchase(object):
 
 
 class CreditCard(object):
-    def __init__(self, data={}):
-        self.token = data["token"]
+    def __init__(self, data):
+        self.token       = data["token"]
         self.card_number = data["card_number"]
         self.card_holder = data["card_holder"]
         self.expiry      = data["card_expiry"]
 
-class Refund(object):
-    def __init__(self, data={}):
-        self.id = data["id"]
-        self.authorization = data["authorization"]
-        self.amount = data["amount"]
-        self.successful = data["successful"]
-        self.message = data["message"]
 
-#        Vinny - 0435 577 979
+class Refund(object):
+    def __init__(self, data):
+        self.id             = data["id"]
+        self.authorization  = data["authorization"]
+        self.amount         = data["amount"]
+        self.successful     = data["successful"]
+        self.message        = data["message"]
