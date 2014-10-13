@@ -147,6 +147,8 @@ class Gateway(object):
             headers=self._headers()
         )
         if response.status_code == 201 or response.status_code == 200:
+            if callable(response.json): # newer versions of requests
+                return response.json()
             return response.json
         else:
             if response.status_code == 401:
