@@ -10,7 +10,7 @@ import fatzebra
 
 # Setup some test details
 VALID_CARD = '5123456789012346'
-DECLINED_CARD = '4444333322221111'
+DECLINED_CARD = '4242424242424242'
 INVALID_CARD = '5123456789012345'
 
 NOW = datetime.datetime.now()
@@ -46,7 +46,7 @@ class FatZebraGatewayTest(FatZebraTestCase):
     def test_purchase_with_invalid_card_responds_properly(self):
         gw = fatzebra.gateway.Gateway()
         result = gw.purchase(
-            100,
+            151, # Amount ending in 51 etc will return error.
             "pytest-" + str(random.random()),
             "Test Card",
             DECLINED_CARD,

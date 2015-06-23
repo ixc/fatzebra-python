@@ -1,9 +1,9 @@
 import requests
 import json
 
-from . import data
-from . import errors
-from . import version
+from fatzebra import data
+from fatzebra import errors
+from fatzebra import version
 
 class Gateway(object):
     SANDBOX_URL = "https://gateway.sandbox.fatzebra.com.au/v1.0/"
@@ -147,7 +147,7 @@ class Gateway(object):
             headers=self._headers()
         )
         if response.status_code == 201 or response.status_code == 200:
-            return response.json
+            return json.loads(response.text)
         else:
             if response.status_code == 401:
                 raise errors.AuthenticationError()
