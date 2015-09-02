@@ -6,15 +6,8 @@ try:
 except ImportError:
     from distutils.core import setup
 
-# Don't import fatzebra module here, since deps may not be installed
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'fatzebra'))
-from fatzebra import version
-
-path, script = os.path.split(sys.argv[0])
-os.chdir(os.path.abspath(path))
-
 setup(name='fatzebra',
-    version=version.VERSION,
+    version=open('fatzebra/version.py').read().split('"')[1],
     description='Fat Zebra Python Library',
     long_description=open("README.txt").read(),
     author='Fat Zebra',
