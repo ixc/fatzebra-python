@@ -134,7 +134,14 @@ class Gateway(object):
             return data.Refund(json_data["response"])
         else:
             raise errors.GatewayError(json_data["errors"])
-
+    
+    def query(self, reference):
+        json_data = self._make_request('get', 'purchases/' + reference)
+        if json_data["successful"]:
+            return data.Purchase(json_data["response"])
+        else:
+            raise errors.GatewayError(json_data["errors"])
+ 
     def _make_request(self, method='post', uri='purchases', payload=None):
         """ Makes the request to the gateway, and handles the responses """
         payload = payload or {}
