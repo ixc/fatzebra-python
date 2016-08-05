@@ -43,6 +43,37 @@ class FatZebraGatewayTest(FatZebraTestCase):
             "1.2.3.4")
         self.assertTrue(result.successful)
 
+    def test_successful_query(self):
+        gw = fatzebra.gateway.Gateway()
+        ref = "pytest-" + str(random.random())
+        result = gw.purchase(
+            100,
+            ref,
+            "Test Card",
+            VALID_CARD,
+            VALID_EXPIRY,
+            "123",
+            "1.2.3.4")
+        self.assertTrue(result.successful)
+        query = gw.query(result.id)
+        self.assertTrue(result.successful)
+        self.assertEqual(result.reference,ref)
+
+    def test_failed_query(self):
+        gw = fatzebra.gateway.Gateway()
+        ref = "pytest-" + str(random.random())
+        result = gw.purchase(
+            151, # Amount ending in 51 etc will return error.
+            ref,
+            "Test Card",
+            DECLINED_CARD,
+            VALID_EXPIRY,
+            "123",
+            "1.2.3.4")
+        self.assertFalse(result.successful)
+        query = gw.query(result.id)
+        self.assertEqual(result.reference,ref)
+
     def test_purchase_with_invalid_card_responds_properly(self):
         gw = fatzebra.gateway.Gateway()
         result = gw.purchase(
