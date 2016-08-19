@@ -141,6 +141,17 @@ class FatZebraGatewayTest(FatZebraTestCase):
         )
         self.assertTrue(response.successful)
 
+    def test_unmatched_refund(self):
+        gw = fatzebra.gateway.Gateway()
+        response = gw.unmatched_refund(
+            100,
+            "pytest-" + str(random.random()),
+            "Test Card",
+            VALID_CARD,
+            VALID_EXPIRY,
+            "123",
+            "1.2.3.4")
+        self.assertTrue(response.successful)
 
 if __name__ == '__main__':
     unittest.main()
