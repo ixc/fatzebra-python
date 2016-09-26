@@ -113,6 +113,39 @@ class Gateway(object):
         else:
             raise errors.GatewayError(json_data["errors"])
 
+
+    def unmatched_refund(self, amount, reference, card_holder, card_number, 
+                         expiry, security_code, customer_ip):
+        """
+        Performs an unmatched refund (if your FZ account has been configured to accept them)
+
+        Keyword arguments:
+            amount         - the amount to be refunded, as an integer
+            reference      - your reference for the refund
+            card_holder    - the card holders name
+            card_number    - the credit card number
+            expiry         - the credit card expiry date in the format of
+                             mm/yyyy (e.g. 05/2013)
+            security_code  - the card security code
+            customer_ip    - the customer/card holders IP address
+        """
+
+        payload = {
+            'amount': amount,
+            'reference': reference,
+            'card_holder': card_holder,
+            'card_number': card_number,
+            'card_expiry': expiry,
+            'cvv': security_code,
+            'customer_ip': customer_ip
+        }
+        json_data = self._make_request('post', 'refunds', payload)
+
+        if json_data["successful"]:
+            return data.Refund(json_data["response"])
+        else:
+            raise errors.GatewayError(json_data["errors"])
+    
     def refund(self, transaction_id, amount, reference):
         """
         Refunds a transaction based off of its original transaction id
