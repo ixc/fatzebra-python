@@ -1,1 +1,1 @@
-VERSION = "0.0.6" # edit with care, see setup.py
+VERSION = "0.0.7" # edit with care, see setup.py
