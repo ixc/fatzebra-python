@@ -59,7 +59,7 @@ class Gateway(object):
             raise errors.GatewayError(json_data["errors"])
 
     def purchase_with_token(self, amount, reference, token, security_code,
-                            customer_ip):
+                            customer_ip, fraud_payload=None):
         """
         Perform a Purchase transaction with a tokenized card.
 
@@ -71,6 +71,7 @@ class Gateway(object):
             token         - the card token
             security_code - the card security code (optional - pass null)
             customer_ip   - the customer/card holders IP address
+            fraud_payload - Fraud payload for fraud checking
 
         Returns fatzebra.data.Purchase or raises fatzebra.errors.GatewayError
         if request fails.
@@ -82,6 +83,8 @@ class Gateway(object):
             'cvv': security_code,
             'customer_ip': customer_ip
         }
+        if fraud_payload is not None:
+            payload.update({"fraud": fraud_payload})
         json_data = self._make_request('post', 'purchases', payload)
 
         if json_data["successful"]:
