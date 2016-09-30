@@ -15,6 +15,8 @@ class Purchase(object):
         self.response_code    = data["response_code"]
         self.captured         = data["captured"]
         self.currency         = data["currency"]
+        self.fraud_result     = data.get("fraud_result")
+        self.fraud_messages   = data.get("fraud_messages")
 
 
 class CreditCard(object):
