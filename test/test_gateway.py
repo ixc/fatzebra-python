@@ -145,6 +145,23 @@ class FatZebraGatewayTest(FatZebraTestCase):
         self.assertIsNotNone(result.fraud_messages)
         self.assertIsNotNone(result.id)
 
+    def test_purchase_with_token_fraud_deny_customer_deny_shipping(self):
+        gw = fatzebra.gateway.Gateway()
+        tokenize_card = gw.tokenize("James Smith", VALID_CARD, VALID_EXPIRY, "123")
+        payload = FatZebraGatewayTest.__serialize_fraud_payload("deny", "deny")
+        result = gw.purchase_with_token(
+            100,
+            "pytest-{0}".format(random.random()),
+            tokenize_card.token,
+            "123",
+            "1.2.3.4",
+            fraud_payload=payload
+        )
+        self.assertFalse(result.successful)
+        self.assertIsNotNone(result.fraud_messages)
+        self.assertEqual(result.fraud_result, "Deny")
+        self.assertIsNotNone(result.id)
+
     def test_successful_query(self):
         gw = fatzebra.gateway.Gateway()
         ref = "pytest-" + str(random.random())
