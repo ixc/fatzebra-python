@@ -25,6 +25,7 @@ class CreditCard(object):
         self.card_number = data["card_number"]
         self.card_holder = data["card_holder"]
         self.expiry      = data["card_expiry"]
+        self.card_category = data["card_category"]
 
 
 class Refund(object):
